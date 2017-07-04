@@ -1,0 +1,151 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+
+}
+
+body{
+    display: flex;
+
+}
+
+#sectionbox{
+    flex: 3;
+    display: flex;
+    position: relative;
+    background: url("images/sec_bg1.jpg");
+    float: left;
+    width: 1006px;
+    height: 650px;
+}
+
+#sectionbox nav{
+    position: absolute;
+    top: 68px;
+    left: 45px;
+    width: 840px;
+    height: 90px;
+    background: seagreen;
+}
+
+#sectionbox nav ul{
+    /*position: absolute;*/
+    display: flex;
+    margin: 0 auto;
+    width: 660px;
+    height: 52px;
+    /*background: darkturquoise;*/
+}
+
+#sectionbox nav ul li{
+    flex: 1;
+    position: relative;
+    height: 100%;
+
+    /*border-right: 1px solid;*/
+}
+
+#sectionbox nav ul li:first-child,
+#sectionbox nav ul li:last-child{
+    flex: 0.2;
+    background: #afb4db;
+
+}
+
+nav ul li a span{
+    display: inline-block;
+    width: 29px;
+    line-height: 52px;
+    background: #afb4db;
+    transition: all .2s;
+}
+
+nav ul li a .list{
+    width: 92px;
+    height: 100%;
+    /*background: #a3cf62;*/
+    background: #afb4db;
+    position: relative;
+
+}
+
+nav ul li:hover .listbefore{
+    transform : rotate(-36deg) skew(-36deg) scale(0.9,0.8) translate(-6px,-11px);
+    /*background: #78a355;*/
+    background: #9b95c9;
+}
+
+nav ul li:hover .listafter{
+    transform : rotate(36deg) skew(36deg) scale(0.9,0.8) translate(6px,-11px);
+    background: #9b95c9;
+}
+
+nav ul li:hover .list{
+    transform : translate(1px,-14.8px) scale(1.21,0.99);
+
+}
+
+#sectionbox .canvas_nav{
+    width: 760px;
+    height: 56px;
+    border: 1px solid black;
+
+    position: absolute;
+    top: 82px;
+    left: 83px;
+}
+
+#timebox{
+    flex: 1;
+    display: flex;
+    width: 340px;
+    height: 650px;
+    border: 1px solid black;
+    position: relative;
+    right: -5px;
+    top: 1px;
+
+}
+
+#timebox #canvasBox{
+
+    width: 219px;
+    height: 219px;
+    margin: 80px auto;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 80px;
+    left: 78px;
+
+}
+
+#canvasBox #clock{
+    /*border: 1px solid #ccc;*/
+
+}
+
+#timebox p{
+
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    color: #FFFFFF;
+}
+
+#timebox #p1{
+    font-size: 17px;
+    position: absolute;
+    bottom: 22px;
+}
+
+#timebox p:last-child{
+    font-size: 37px;
+    font-weight: bold;
+}

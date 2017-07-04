@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="米粒.css" type="text/css"/>
+
+
+</head>
+<body>
+<!--<div id="navbox">
+    <div class="section">
+
+    </div>
+</div>
+<div id="asidebox">
+    <div class="header"></div>
+    <div class="section"></div>
+</div>-->
+<div id="sectionbox">
+    <nav>
+        <ul>
+            <li><span>&nbsp</span></li>
+            <li>
+                <a href="#">
+                    <span class="listbefore">&nbsp</span><span class="list">a</span><span class="listafter">&nbsp</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="listbefore">&nbsp</span><span class="list">a</span><span class="listafter">&nbsp</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="listbefore">&nbsp</span><span class="list">a</span><span class="listafter">&nbsp</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="listbefore">&nbsp</span><span class="list">a</span><span class="listafter">&nbsp</span>
+                </a>
+            </li>
+            <li><span>&nbsp</span></li>
+        </ul>
+    </nav>
+    <div class="canvas_nav">
+        <canvas id="menu" width="760px" height="56px"></canvas>
+    </div>
+
+</div>
+<div id="timebox">
+    <div id="canvasBox">
+        <canvas id="clock" width="220px" height="220px">
+        </canvas>
+    </div>
+    <p id="p1">
+        <span id="day"></span>
+        <span id="date"></span>
+        <span id="month"></span>
+        <span id="year"></span>
+    </p>
+    <p>
+        <i>
+            <span id="hour"></span> :
+            <span id="minute"></span> :
+            <span id="second"></span>
+        </i>
+    </p>
+</div>
+<a href="https://kg2.qq.com/node/play?s=6Db9Ns6JPrukn6v5">mi</a>
+<script>
+
+    function Week(){
+        var d = new Date();
+
+        var nowday = d.getDay();
+        var a = document.getElementById("day");
+
+        if(nowday==0){
+            a.innerHTML="Sunday";
+        }else if(nowday==1){
+            a.innerHTML="Monday";
+        }else if(nowday==2){
+            a.innerHTML="Tustday";
+        }else if(nowday==3){
+            a.innerHTML="Wehnesday";
+        }else if(nowday==4){
+            a.innerHTML="Thursday";
+        }else if(nowday==5){
+            a.innerHTML="Friday";
+        }else {
+            a.innerHTML="Setarday";
+        }
+    }
+
+    function Month(){
+        var d = new Date();
+        var nowmonth = d.getMonth();
+        var a = document.getElementById("month");
+
+        if(nowmonth==0){
+            a.innerHTML="Jan";
+        }else if(nowmonth==1){
+            a.innerHTML="Feb";
+        }else if(nowmonth==2){
+            a.innerHTML="Mar";
+        }else if(nowmonth==3){
+            a.innerHTML="Apr";
+        }else if(nowmonth==4){
+            a.innerHTML="May";
+        }else if(nowmonth==5){
+            a.innerHTML="Jun";
+        }else if(nowmonth==6){
+            a.innerHTML="July";
+        }else if(nowmonth==7){
+            a.innerHTML="Aug";
+        }else if(nowmonth==8){
+            a.innerHTML="Sep";
+        }else if(nowmonth==9){
+            a.innerHTML="Oct";
+        }else if(nowmonth==10){
+            a.innerHTML="Nov";
+        }else {
+            a.innerHTML="Dec";
+        }
+    }
+
+    /*数字时钟*/
+    function Timechange() {
+
+        var d = new Date();
+
+        /*var nowday = d.getDay();
+        var a = document.getElementById("day");*/
+        Week();
+        /*a.innerHTML = nowday;*/
+
+        var now = d.getFullYear();
+        var a = document.getElementById("year");
+        a.innerHTML = now;
+
+        /*var now = d.getMonth();
+        var a = document.getElementById("month");
+        a.innerHTML = eval(now + 1);*/
+        Month();
+
+        var now = d.getDate();
+        var a = document.getElementById("date");
+        a.innerHTML = now;
+
+        var now = d.getHours();
+        var a = document.getElementById("hour");
+        a.innerHTML = now;
+
+        var now = d.getMinutes();
+        var a = document.getElementById("minute");
+        if(now<10){
+            a.innerHTML="0"+now;
+        }else{
+            a.innerHTML = now;
+        }
+
+        var now = d.getSeconds();
+        var a = document.getElementById("second");
+        if(now<10){
+            a.innerHTML="0"+now;
+        }else{
+            a.innerHTML = now;
+        }
+    }
+
+    setInterval(Timechange,1000);
+    Timechange();
+
+    /*图形时钟*/
+    var dom=document.getElementById("clock");
+    var ctx=dom.getContext('2d');
+    var width=ctx.canvas.width;
+    var height=ctx.canvas.height;
+    var r=width/2;
+    var rem=width/200;
+
+    /*白天黑夜变换背景*/
+    function DayNight(){
+        var time=new Date();
+        now=time.getHours();
+        if(now>5 && now<19){
+            ctx.strokeStyle='#000';
+            ctx.fillStyle='#000';
+            document.getElementById("canvasBox").style.background="url(images/阿狸.jpg) no-repeat 80% bottom";
+            document.getElementById("canvasBox").style.backgroundSize="340px 220px";
+            document.body.style.background="url(images/白天.jpg) no-repeat top center";
+            document.body.style.backgroundSize="1495px 660px";
+        }else{
+            ctx.strokeStyle='#EEE8AA';
+            ctx.fillStyle='#EEE8AA';
+            document.getElementById("canvasBox").style.background="url(images/阿狸（黑夜）.jpg) no-repeat center";
+            document.getElementById("canvasBox").style.backgroundSize="340px 220px";
+            document.body.style.background="url(images/黑夜.jpg) no-repeat top center";
+            document.body.style.backgroundSize="1495px 660px";
+
+        }
+
+    }
+
+    DayNight();
+
+
+    /*外框*/
+    function drawBackground(){
+        ctx.save();
+        ctx.translate(r,r);
+        ctx.lineWidth=10*rem;
+        ctx.beginPath();
+        ctx.arc(0,0,r-ctx.lineWidth/2,0,2*Math.PI,false);
+        ctx.stroke();
+
+        /*数字*/
+        var hourNumbers=[3,4,5,6,7,8,9,10,11,12,1,2];
+        ctx.font=15*rem+'px Arial';
+        ctx.textAlign='center';
+        ctx.textBaseline='middle';
+        hourNumbers.forEach(function (number,i) {
+            var rad=2*Math.PI/12*i;
+            var x=Math.cos(rad)*(r-30*rem);
+            var y=Math.sin(rad)*(r-30*rem);
+            ctx.fillText(number,x,y);
+        });
+
+        /*数字后面的点*/
+        for(var i=0; i<60; i++){
+            var rad=2*Math.PI/60*i;
+            var x=Math.cos(rad)*(r-18*rem);
+            var y=Math.sin(rad)*(r-18*rem);
+            ctx.beginPath();
+            if(i % 5 == 0){
+                ctx.fillStyle='rgba(0,0,0,1)';
+            }else{
+                ctx.fillStyle='rgba(0,0,0,.4)';
+            }
+            ctx.arc(x,y,2*rem,0,2*Math.PI,false);
+            ctx.fill();
+        }
+    }
+
+    /*时针*/
+    function drawHour(hour,minute){
+        ctx.save();
+        ctx.beginPath();
+        var rad=2 * Math.PI / 12 * hour;
+        var mrad=2 * Math.PI / 12 / 60 * minute;
+        ctx.rotate(rad+mrad);
+        ctx.lineWidth=6*rem;
+        ctx.lineCap='round';
+        ctx.moveTo(0,10*rem);
+        ctx.lineTo(0,-r/2);
+        ctx.stroke();
+        ctx.restore();
+    }
+
+    /*分针*/
+    function drawMinute(minute){
+        ctx.save();
+        ctx.beginPath();
+        var rad=2 * Math.PI / 60 * minute;
+        ctx.rotate(rad);
+        ctx.lineWidth=3*rem;
+        ctx.lineCap='round';
+        ctx.moveTo(0,10*rem);
+        ctx.lineTo(0,-r+35*rem);
+        ctx.stroke();
+        ctx.restore();
+    }
+
+    /*秒针*/
+    function drawSecond(second){
+        ctx.save();
+        ctx.beginPath();
+        ctx.fillStyle='red';
+        var rad=2 * Math.PI / 60 * second;
+        ctx.rotate(rad);
+        ctx.lineCap='round';
+        ctx.moveTo(-2*rem,16*rem);
+        ctx.lineTo(2*rem,16*rem);
+        ctx.lineTo(1,-r+18*rem);
+        ctx.lineTo(-1,-r+18*rem);
+        ctx.fill();
+        ctx.restore();
+    }
+
+    /*圆点*/
+    function drawDot(){
+        ctx.beginPath();
+        ctx.fillStyle='#fff';
+        ctx.arc(0,0,4*rem,0,2*Math.PI);
+        ctx.fill();
+    }
+
+    /*drawBackground();*/
+
+
+    function draw(){
+        ctx.clearRect(0,0,width,height);
+        var now=new Date();
+        var hour=now.getHours();
+        var minute=now.getMinutes();
+        var second=now.getSeconds();
+        DayNight();
+        drawBackground();
+        drawHour(hour,minute);
+        drawMinute(minute);
+        drawSecond(second);
+        drawDot();
+        ctx.restore();
+    }
+
+    setInterval(draw,1000);
+</script>
+<script type="text/javascript" src="menucanvas.js"></script>
+</body>
+</html>
